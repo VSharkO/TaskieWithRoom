@@ -24,10 +24,6 @@ import butterknife.OnClick;
 public class TasksActivity extends AppCompatActivity {
 
     private static final String TAG = TasksActivity.class.getSimpleName();
-    private static final int REQUEST_NEW_TASK = 10;
-    public static final String EXTRA_TASK = "task";
-
-    //	TaskRepository mRepository = TaskRepository.getInstance();
     private TaskDao mTaskDao;
 
     TaskAdapter mTaskAdapter;
@@ -45,7 +41,7 @@ public class TasksActivity extends AppCompatActivity {
 
         @Override
         public void onLongClick(Task task) {
-//			mRepository.removeTask(task);
+            mTaskDao.delete(task);
             updateTasksDisplay();
         }
     };
@@ -112,19 +108,6 @@ public class TasksActivity extends AppCompatActivity {
     public void startNewTaskActivity() {
         Intent newTask = new Intent();
         newTask.setClass(this, NewTaskActivity.class);
-//        startActivityForResult(newTask, REQUEST_NEW_TASK);
         startActivity(newTask);
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        if (requestCode == REQUEST_NEW_TASK && resultCode == RESULT_OK) {
-//            if (data != null && data.hasExtra(EXTRA_TASK)) {
-//                Task task = (Task) data.getSerializableExtra(EXTRA_TASK);
-//                mRepository.saveTask(task);
-//                updateTasksDisplay();
-//            }
-//        }
-//    }
 }
