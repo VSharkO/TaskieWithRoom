@@ -23,4 +23,7 @@ public interface TaskDao {
 
     @Query("SELECT * from task_table ORDER BY mPriority ASC")
     List<Task> getAllTasks();
+
+    @Query("SELECT * from task_table WHERE mPriority = :Priority")
+    List<Task> findTasksByPriority(String Priority);
 }

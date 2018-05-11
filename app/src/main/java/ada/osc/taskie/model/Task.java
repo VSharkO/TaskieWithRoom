@@ -11,8 +11,6 @@ import java.util.UUID;
 @Entity(tableName = "task_table")
 public class Task implements Serializable {
 
-    private static int sID = 0;
-
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

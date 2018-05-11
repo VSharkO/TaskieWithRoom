@@ -2,4 +2,8 @@
     <string name="app_name">Taskie</string>
     <string name="newTask_title_hint">Enter title</string>
     <string name="newTask_description_hint">Enter description</string>
+    <string name="highPriorty">High priority</string>
+    <string name="mediumPriority">Medium priority</string>
+    <string name="lowPriority">Low priority</string>
+    <string name="all">All tasks</string>
 </resources>

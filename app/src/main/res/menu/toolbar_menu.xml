@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_highPriorty"
+        android:title="@string/highPriorty"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_mediumPriority"
+        android:title="@string/mediumPriority"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_lowPriority"
+        android:title="@string/lowPriority"
+        app:showAsAction="never"/>
+
+    <item
+    android:id="@+id/action_all"
+    android:title="@string/all"
+    app:showAsAction="never"/>
+</menu>
