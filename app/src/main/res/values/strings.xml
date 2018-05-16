@@ -6,4 +6,7 @@
     <string name="mediumPriority">Medium priority</string>
     <string name="lowPriority">Low priority</string>
     <string name="all">All tasks</string>
+    <string name="doYouWantToDelete">Delete item?</string>
+    <string name="saved_priority_key">priority_key</string>
+    <string name="defaultValue">none</string>
 </resources>

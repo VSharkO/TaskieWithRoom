@@ -1,8 +1,12 @@
 package ada.osc.taskie.view;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -31,7 +35,6 @@ public class TasksActivity extends AppCompatActivity {
     private static final String TAG = TasksActivity.class.getSimpleName();
     private TaskDao mTaskDao;
     TaskPriority showTasksWithPriority = null;
-
     TaskAdapter mTaskAdapter;
     @BindView(R.id.my_toolbar)Toolbar myToolbar;
     @BindView(R.id.fab_tasks_addNew)
@@ -46,9 +49,17 @@ public class TasksActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onLongClick(Task task) {
-            mTaskDao.delete(task);
-            updateTasksDisplay();
+        public void onLongClick(final Task task) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(TasksActivity.this);
+            builder.setTitle(R.string.doYouWantToDelete)
+                    .setItems(R.array.optons_array, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(which==0){
+                                mTaskDao.delete(task);
+                            }
+                            updateTasksDisplay();
+                        }
+                    }).show();
         }
     };
 
