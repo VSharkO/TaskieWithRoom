@@ -79,7 +79,7 @@ public class TasksActivity extends AppCompatActivity {
         for (Task task:randomTasks) {
             mTaskDao.insert(task);
         }
-        //mCategoriesDao.deleteAll(mCategoriesDao.getAllCategories());
+        mCategoriesDao.deleteAll(mCategoriesDao.getAllCategories());
         setUpRecyclerView();
         updateTasksDisplay();
     }
