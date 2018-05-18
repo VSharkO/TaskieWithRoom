@@ -33,7 +33,7 @@ public class NewTaskActivity extends AppCompatActivity {
 	@BindView(R.id.edittext_newtask_newcategory) EditText mNewCategory;
 	private TaskDao mTaskDao;
 	private CategoriesDao mCategoriesDao;
-	private final TaskCategory initialCategory = new TaskCategory("No categories");
+	private final TaskCategory initialCategory = new TaskCategory("no category");
 	boolean isAddNewCategory;
 	SharedPreferences sharedPref;
 
@@ -49,11 +49,9 @@ public class NewTaskActivity extends AppCompatActivity {
 	}
 
 	private void setUpCategorySpinnerSource() {
-		if(mCategoriesDao.getAllCategories().size()==0){
+		if(mCategoriesDao.getAllCategories().size()==0)
 			mCategoriesDao.insert(initialCategory);
-		}else{
-			mCategoriesDao.delete(initialCategory);
-		}
+
 		mCategoriesEntry.setAdapter(
 				new ArrayAdapter<>(
 						this, android.R.layout.simple_list_item_1, mCategoriesDao.getAllCategories())
