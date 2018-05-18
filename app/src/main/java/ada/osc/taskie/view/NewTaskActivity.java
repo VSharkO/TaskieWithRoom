@@ -102,8 +102,9 @@ public class NewTaskActivity extends AppCompatActivity {
 		String description = mDescriptionEntry.getText().toString();
 		TaskCategory category=initialCategory;
 		if(isAddNewCategory){
-			if(addNewCategoryToDb() != null) {
-				category = addNewCategoryToDb();
+			TaskCategory newCategory = addNewCategoryToDb();
+			if(newCategory != null) {
+				category = newCategory;
 			}
 		}else{
 			category = (TaskCategory) mCategoriesEntry.getSelectedItem();
