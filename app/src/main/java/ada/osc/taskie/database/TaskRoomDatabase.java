@@ -7,14 +7,15 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import ada.osc.taskie.model.Task;
+import ada.osc.taskie.model.TaskCategory;
 import ada.osc.taskie.util.TypeConverterUtil;
 
-@Database(entities = {Task.class}, version = 1)
+@Database(entities = {Task.class, TaskCategory.class}, version = 4)
 @TypeConverters({TypeConverterUtil.class})
 public abstract class TaskRoomDatabase extends RoomDatabase {
 
     public abstract TaskDao taskDao();
-
+    public abstract CategoriesDao categoryDao();
     private static TaskRoomDatabase INSTANCE;
 
     public static TaskRoomDatabase getDatabase(final Context context) {
@@ -24,6 +25,7 @@ public abstract class TaskRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             TaskRoomDatabase.class, "task_database")
                             .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

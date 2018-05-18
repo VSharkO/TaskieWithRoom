@@ -1,9 +1,7 @@
 package ada.osc.taskie.view;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -21,9 +19,11 @@ import android.widget.Toast;
 import java.util.List;
 
 import ada.osc.taskie.R;
+import ada.osc.taskie.database.CategoriesDao;
 import ada.osc.taskie.database.TaskDao;
 import ada.osc.taskie.database.TaskRoomDatabase;
 import ada.osc.taskie.model.Task;
+import ada.osc.taskie.model.TaskCategory;
 import ada.osc.taskie.model.TaskGenerator;
 import ada.osc.taskie.model.TaskPriority;
 import butterknife.BindView;
@@ -34,6 +34,7 @@ public class TasksActivity extends AppCompatActivity {
 
     private static final String TAG = TasksActivity.class.getSimpleName();
     private TaskDao mTaskDao;
+    private CategoriesDao mCategoriesDao;
     TaskPriority showTasksWithPriority = null;
     TaskAdapter mTaskAdapter;
     @BindView(R.id.my_toolbar)Toolbar myToolbar;
@@ -74,15 +75,13 @@ public class TasksActivity extends AppCompatActivity {
         List<Task> randomTasks;
         randomTasks=TaskGenerator.generate(5);
         mTaskDao = database.taskDao();
+        mCategoriesDao = database.categoryDao();
         for (Task task:randomTasks) {
             mTaskDao.insert(task);
         }
-
-
-
+        //mCategoriesDao.deleteAll(mCategoriesDao.getAllCategories());
         setUpRecyclerView();
         updateTasksDisplay();
-
     }
 
     @Override
@@ -141,7 +140,7 @@ public class TasksActivity extends AppCompatActivity {
     private void toastTask(Task task) {
         Toast.makeText(
                 this,
-                task.getTitle() + "\n" + task.getDescription(),
+                task.getTitle() + "\n" + task.getDescription() + "\n" + task.getCategory(),
                 Toast.LENGTH_SHORT
         ).show();
     }

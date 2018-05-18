@@ -19,13 +19,15 @@ public class Task implements Serializable {
     private String mDescription;
     private boolean mCompleted;
     private TaskPriority mPriority;
+    private TaskCategory mCategory;
 
-    public Task(String title, String description, TaskPriority priority) {
+    public Task(String title, String description, TaskPriority priority, TaskCategory category) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
         mCompleted = false;
         mPriority = priority;
+        mCategory = category;
     }
 
     public void setId(String id) {
@@ -67,4 +69,13 @@ public class Task implements Serializable {
     public void setPriority(TaskPriority priority) {
         mPriority = priority;
     }
+
+    public TaskCategory getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(TaskCategory category) {
+        this.mCategory = category;
+    }
+
 }

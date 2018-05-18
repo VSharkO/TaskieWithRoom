@@ -9,4 +9,5 @@
     <string name="doYouWantToDelete">Delete item?</string>
     <string name="saved_priority_key">priority_key</string>
     <string name="defaultValue">none</string>
+    <string name="enterCategory">Enter category</string>
 </resources>
